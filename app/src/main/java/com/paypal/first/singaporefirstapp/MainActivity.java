@@ -15,6 +15,8 @@ public class MainActivity extends Activity {
 
     public static final String TAG = "SingaporeFirstApp";
 
+    public static final int REQUEST_CODE = 1010;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,14 +25,34 @@ public class MainActivity extends Activity {
 
     public void doNextClick(View v) {
         Log.i(TAG, "Next View is clicked... handled by XML wired handler");
-        Intent intent = new Intent(this, SecondActivity.class);
 
         if (v == findViewById(R.id.callButton)) {
+            Log.i(TAG, "Clicked on Call Button");
+            Intent intent = new Intent(this, SecondActivity.class);
             intent.putExtra("buttonAction", ButtonAction.Call);
-        } else {
+            startActivity(intent);
+        } else if (v == findViewById(R.id.browseButton)) {
+            Log.i(TAG, "Clicked on Browse Button");
+            Intent intent = new Intent(this, SecondActivity.class);
             intent.putExtra("buttonAction", ButtonAction.Browse);
+            startActivity(intent);
+        } else {
+            Log.i(TAG, "Clicked on Get Result Button");
+            Intent intent = new Intent(this, ThirdActivity.class);
+            startActivityForResult(intent, REQUEST_CODE);
         }
-        startActivity(intent);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUEST_CODE) {
+            Bundle bundle = data.getExtras();
+            if (resultCode == RESULT_OK) {
+                Log.i(TAG, String.format("Result from ThirdActivity: %s", bundle.getSerializable("feedback")));
+            } else {
+                Log.e(TAG, String.format("Result returned something unusual: %s", bundle.getString("error")));
+            }
+        }
     }
 
 

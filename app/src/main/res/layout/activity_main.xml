@@ -35,10 +35,19 @@
         android:layout_height="wrap_content"
         android:text="Browse Activity"
         android:id="@+id/browseButton"
-        android:layout_below="@+id/callButton"
-        android:layout_alignRight="@+id/callButton"
-        android:layout_alignEnd="@+id/callButton"
         android:onClick="doNextClick"
-        />
+        android:layout_below="@+id/callButton"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Get Result"
+        android:id="@+id/getResultButton"
+        android:onClick="doNextClick"
+        android:layout_below="@+id/browseButton"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>
