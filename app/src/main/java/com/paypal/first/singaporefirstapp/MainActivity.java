@@ -1,6 +1,7 @@
 package com.paypal.first.singaporefirstapp;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -22,6 +23,8 @@ public class MainActivity extends Activity {
 
     public void doNextClick(View v) {
         Log.i(TAG, "Next View is clicked... handled by XML wired handler");
+        Intent intent = new Intent(this, SecondActivity.class);
+        startActivity(intent);
     }
 
 
