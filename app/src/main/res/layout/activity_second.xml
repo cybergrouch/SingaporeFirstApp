@@ -13,22 +13,13 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Call"
-        android:id="@+id/callButton"
+        android:text="Do Action"
+        android:id="@+id/actionButton"
         android:layout_below="@+id/textView2"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="87dp"
         android:onClick="doSecondButtonClick"
         />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="BROWSE"
-        android:id="@+id/browseButton"
-        android:layout_below="@+id/callButton"
-        android:layout_centerHorizontal="true"
-        android:onClick="doSecondButtonClick"
-        />
 
 </RelativeLayout>

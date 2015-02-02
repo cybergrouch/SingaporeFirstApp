@@ -9,8 +9,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import java.util.concurrent.Callable;
+
 
 public class SecondActivity extends ActionBarActivity {
+
+    private Callable<Intent> futureIntent = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,33 +23,42 @@ public class SecondActivity extends ActionBarActivity {
 
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
-        ButtonAction buttonAction = (ButtonAction) bundle.getSerializable("buttonAction");
+        final ButtonAction buttonAction = (ButtonAction) bundle.getSerializable("buttonAction");
+
+        futureIntent = new Callable<Intent>() {
+
+            @Override
+            public Intent call() throws Exception {
+                if (ButtonAction.Call == buttonAction) {
+                    return callIntent();
+                }
+                return browseIntent();
+            }
+        };
         Log.i(MainActivity.TAG, String.format("Action Passed: %s", buttonAction));
     }
 
-    public void doSecondButtonClick(View v) {
+    public void doSecondButtonClick(View v) throws Exception {
         Log.i(MainActivity.TAG, String.format("Second Button is clicked: %s", v.getTag()));
-        if (v == findViewById(R.id.callButton)) {
-            call();
-        } else if(v == findViewById(R.id.browseButton)) {
-            browse();
+        if (v == findViewById(R.id.actionButton)) {
+            startActivity(futureIntent.call());
         } else {
             Log.e(MainActivity.TAG, String.format("No button found: %s", v.getTag()));
         }
     }
 
-    private void call() {
+    private Intent callIntent() {
         // Call Implicit Intent
         Intent intent = new Intent(Intent.ACTION_CALL);
         intent.setData(Uri.parse("tel:97365777"));
-        startActivity(intent);
+        return intent;
     }
 
-    private void browse() {
+    private Intent browseIntent() {
         // Browse Implicit Intent
         Intent intent = new Intent(Intent.ACTION_VIEW);
         intent.setData(Uri.parse("http://www.google.com"));
-        startActivity(intent);
+        return intent;
     }
 
 

@@ -33,7 +33,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="BROWSE ACTIVITY"
+        android:text="Browse Activity"
         android:id="@+id/browseButton"
         android:layout_below="@+id/callButton"
         android:layout_alignRight="@+id/callButton"
