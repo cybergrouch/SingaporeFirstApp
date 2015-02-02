@@ -19,10 +19,27 @@ public class SecondActivity extends ActionBarActivity {
     }
 
     public void doSecondButtonClick(View v) {
-        Log.i(MainActivity.TAG, "Second Button is clicked");
-        // Implicit Intent
+        Log.i(MainActivity.TAG, String.format("Second Button is clicked: %s", v.getTag()));
+        if (v == findViewById(R.id.callButton)) {
+            call();
+        } else if(v == findViewById(R.id.browseButton)) {
+            browse();
+        } else {
+            Log.e(MainActivity.TAG, String.format("No button found: %s", v.getTag()));
+        }
+    }
+
+    private void call() {
+        // Call Implicit Intent
         Intent intent = new Intent(Intent.ACTION_CALL);
         intent.setData(Uri.parse("tel:97365777"));
+        startActivity(intent);
+    }
+
+    private void browse() {
+        // Browse Implicit Intent
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setData(Uri.parse("http://www.google.com"));
         startActivity(intent);
     }
 
