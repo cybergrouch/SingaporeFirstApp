@@ -16,6 +16,11 @@ public class SecondActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
+
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+        ButtonAction buttonAction = (ButtonAction) bundle.getSerializable("buttonAction");
+        Log.i(MainActivity.TAG, String.format("Action Passed: %s", buttonAction));
     }
 
     public void doSecondButtonClick(View v) {

@@ -24,6 +24,12 @@ public class MainActivity extends Activity {
     public void doNextClick(View v) {
         Log.i(TAG, "Next View is clicked... handled by XML wired handler");
         Intent intent = new Intent(this, SecondActivity.class);
+
+        if (v == findViewById(R.id.callButton)) {
+            intent.putExtra("buttonAction", ButtonAction.Call);
+        } else {
+            intent.putExtra("buttonAction", ButtonAction.Browse);
+        }
         startActivity(intent);
     }
 
