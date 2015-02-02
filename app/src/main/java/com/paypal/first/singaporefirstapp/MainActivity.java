@@ -18,15 +18,10 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+    }
 
-        Button button = (Button) findViewById(R.id.next);
-        button.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                Log.i(TAG, "Next View is clicked");
-            }
-        });
+    public void doNextClick(View v) {
+        Log.i(TAG, "Next View is clicked");
     }
 
 
