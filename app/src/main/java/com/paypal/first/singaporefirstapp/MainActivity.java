@@ -2,6 +2,7 @@ package com.paypal.first.singaporefirstapp;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -90,6 +91,12 @@ public class MainActivity extends Activity {
     public void onResume() {
         Log.i(TAG, "onResume invoked.");
         super.onResume();
+    }
+
+    @Override
+    public void onRestart() {
+        Log.i(TAG, "onRestart invoked.");
+        super.onRestart();
     }
 
     @Override
