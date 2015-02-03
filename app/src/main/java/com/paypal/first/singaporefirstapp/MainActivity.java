@@ -13,12 +13,14 @@ import android.widget.Button;
 
 public class MainActivity extends Activity {
 
-    public static final String TAG = "SingaporeFirstApp";
+    public static final String TAG = "SingaporeFirstApp-LOG";
 
     public static final int REQUEST_CODE = 1010;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.i(TAG, "onCreate invoked.");
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
@@ -76,5 +78,35 @@ public class MainActivity extends Activity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onStart() {
+        Log.i(TAG, "onStart invoked.");
+        super.onStart();
+    }
+
+    @Override
+    public void onResume() {
+        Log.i(TAG, "onResume invoked.");
+        super.onResume();
+    }
+
+    @Override
+    public void onPause() {
+        Log.i(TAG, "onPause invoked.");
+        super.onPause();
+    }
+
+    @Override
+    public void onStop() {
+        Log.i(TAG, "onStop invoked.");
+        super.onStop();
+    }
+
+    @Override
+    public void onDestroy() {
+        Log.i(TAG, "onDestroy invoked.");
+        super.onDestroy();
     }
 }
